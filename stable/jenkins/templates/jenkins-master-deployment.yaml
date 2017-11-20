@@ -49,9 +49,6 @@ spec:
               mountPath: /var/jenkins_config
               name: jenkins-config
             -
-              mountPath: /usr/share/jenkins/ref/plugins/
-              name: plugin-dir
-            -
               mountPath: /usr/share/jenkins/ref/secrets/
               name: secrets-dir
       containers:
@@ -103,10 +100,6 @@ spec:
               mountPath: /var/jenkins_config
               name: jenkins-config
               readOnly: true
-            -
-              mountPath: /usr/share/jenkins/ref/plugins/
-              name: plugin-dir
-              readOnly: false
             -
               mountPath: /usr/share/jenkins/ref/secrets/
               name: secrets-dir
