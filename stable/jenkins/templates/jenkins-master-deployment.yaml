@@ -58,6 +58,19 @@ spec:
           {{- if .Values.Master.UseSecurity }}
           args: [ "--argumentsRealm.passwd.$(ADMIN_USER)=$(ADMIN_PASSWORD)",  "--argumentsRealm.roles.$(ADMIN_USER)=admin"]
           {{- end }}
+          readinessProbe:
+            timeoutSeconds: {{ default 5 .Values.Master.Readiness.TimeoutSeconds }}
+            initialDelaySeconds: {{ default 10 .Values.Master.Readiness.InitialDelaySeconds }}
+            httpGet:
+              path: "/login"
+              port: {{ .Values.Master.ContainerPort }}
+          livenessProbe:
+            timeoutSeconds: {{ default 5 .Values.Master.Liveness.TimeoutSeconds }}
+            initialDelaySeconds: {{ default 60 .Values.Master.Liveness.InitialDelaySeconds }}
+            failureThreshold: {{ default 10 .Values.Master.Liveness.FailureThreshold }}
+            httpGet:
+              path: "/login"
+              port: {{ .Values.Master.ContainerPort }}
           env:
             - name: JAVA_OPTS
               value: "{{ default "" .Values.Master.JavaOpts}}"

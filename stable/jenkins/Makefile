@@ -1,7 +1,7 @@
-CHART_REPO := http://chartmuseum.thunder.35.189.66.194.nip.io
+CHART_REPO := http://chartmuseum.thunder.thunder.fabric8.io
 NAME := jenkins
 OS := $(shell uname)
-RELEASE_VERSION := $(shell semver-release-version)
+RELEASE_VERSION := $(shell jx-release-version)
 
 setup:
 	minikube addons enable ingress
@@ -15,11 +15,9 @@ build: clean
 
 install: clean build
 	helm install . --name ${NAME}
-	watch kubectl get pods
 
 upgrade: clean build
 	helm upgrade ${NAME} .
-	watch kubectl get pods
 
 delete:
 	helm delete --purge ${NAME}
