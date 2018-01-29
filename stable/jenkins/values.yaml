@@ -71,6 +71,9 @@ Master:
       # - secretName: jenkins.cluster.local
       #   hosts:
       #     - jenkins.cluster.local
+  Overwrite: {}
+    # Plugins: true
+    # Config: true
 
 Agent:
   Enabled: true

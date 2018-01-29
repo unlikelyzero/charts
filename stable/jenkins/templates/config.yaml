@@ -141,6 +141,12 @@ data:
     </scriptApproval>
 {{- end }}
   apply_config.sh: |-
+{{- if .Values.Master.Overwrite.Config }}
+    rm -rf /var/jenkins_home/config.xml
+{{- end }}
+{{- if .Values.Master.Overwrite.Plugins }}
+    rm -rf /var/jenkins_home/plugins
+{{- end }}
     mkdir -p /usr/share/jenkins/ref/secrets/;
     echo "false" > /usr/share/jenkins/ref/secrets/slave-to-master-security-kill-switch;
     cp -n /var/jenkins_config/config.xml /var/jenkins_home;
