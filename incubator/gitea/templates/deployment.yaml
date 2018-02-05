@@ -4,6 +4,8 @@ metadata:
   name: {{ template "gitea.fullname" . }}
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+  annotations:
+    configmap.fabric8.io/update-on-change:  "{{ template "gitea.fullname" . }}"
 spec:
   replicas: 1
   strategy:
