@@ -5,7 +5,7 @@
 ## Kubernetes configuration
 ## For minikube, set this to NodePort, elsewhere use LoadBalancer
 ##
-serviceType: NodePort
+serviceType: ClusterIP
 
 replicaCount: 1
 
@@ -14,6 +14,9 @@ imageTag: 1.3.2
 imagePullPolicy: IfNotPresent
 
 service:
+  annotations:
+    fabric8.io/expose: "true"
+
   ## Override the components name (defaults to service).
   ##
   # nameOverride:
