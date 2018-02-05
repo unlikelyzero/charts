@@ -16,6 +16,13 @@ imagePullPolicy: IfNotPresent
 service:
   annotations:
     fabric8.io/expose: "true"
+    expose.config.fabric8.io/config-yaml: |-
+      - key: app.ini
+        prefix: "DOMAIN = "
+        expression: host
+      - key: app.ini
+        prefix: "ROOT_URL = "
+        expression: url
 
   ## Override the components name (defaults to service).
   ##

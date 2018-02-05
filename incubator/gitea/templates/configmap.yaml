@@ -7,7 +7,7 @@ metadata:
     component: {{ default "gitea" .Values.service.nameOverride }}
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
-  name: {{ template "gitea.gitea.fullname" . }}-config
+  name: {{ template "gitea.gitea.fullname" . }}
 data:
   app.ini: |-
     APP_NAME = {{ .Values.service.gitea.appName }}

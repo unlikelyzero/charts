@@ -54,7 +54,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: {{ template "gitea.fullname" . }}-config
+            name: {{ template "gitea.fullname" . }}
         - name: data
       {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
