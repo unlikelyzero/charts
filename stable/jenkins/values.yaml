@@ -77,7 +77,7 @@ Master:
 
 Agent:
   Enabled: true
-  
+  ContainerCap: 10
   Component: "jenkins-agent"
 
   # Key Value selectors. Ex:
