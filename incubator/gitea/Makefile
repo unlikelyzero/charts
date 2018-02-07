@@ -1,4 +1,4 @@
-CHART_REPO := http://chartmuseum.thunder.thunder.fabric8.io
+CHART_REPO := http://chartmuseum.build.cd.jenkins-x.io
 NAME := gitea
 OS := $(shell uname)
 RELEASE_VERSION := $(shell jx-release-version)
