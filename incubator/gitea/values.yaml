@@ -24,14 +24,14 @@ gitea-expose:
     helm.sh/hook-delete-policy: hook-succeeded
   # add custom domain here else defaults to using nip.io if a single node cluster
 
-# TODO need way to cleanup a single service only!
-#
-#gitea-cleanup:
-#  Args:
-#    - --cleanup
-#  Annotations:
-#    helm.sh/hook: pre-delete
-#    helm.sh/hook-delete-policy: hook-succeeded
+gitea-cleanup:
+  Args:
+    - --cleanup
+    - --filter
+    - gitea-gitea
+  Annotations:
+    helm.sh/hook: pre-delete
+    helm.sh/hook-delete-policy: hook-succeeded
 
 service:
   annotations:
