@@ -10,7 +10,7 @@ serviceType: ClusterIP
 replicaCount: 1
 
 image: gitea/gitea
-imageTag: 1.3.2
+imageTag: 1.4
 imagePullPolicy: IfNotPresent
 
 gitea-expose:
