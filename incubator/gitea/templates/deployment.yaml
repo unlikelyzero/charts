@@ -18,6 +18,19 @@ spec:
       labels:
         app: {{ template "gitea.fullname" . }}
     spec:
+      initContainers:
+        - name: init-config
+          image: busybox
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: data
+              mountPath: /data
+            - name: config
+              mountPath: /init-config
+          command:
+            - 'sh'
+            - '-xc'
+            - 'mkdir -p /data/gitea/conf; echo Created dir; cp /init-config/app.ini /data/gitea/conf/app.ini; echo Finished'
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image }}:{{ .Values.imageTag }}"
@@ -51,7 +64,7 @@ spec:
             - name: data
               mountPath: /data
             - name: config
-              mountPath: /data/gitea/conf/app.ini
+              mountPath: /data/gitea/conf/config-app.ini
               subPath: app.ini
       volumes:
         - name: config
